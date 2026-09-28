@@ -704,5 +704,72 @@ import '../styles/global.css';
 <script>
   import '../scripts/deck.js';
 </script>
+<!-- ============ BOTÓN MODO CLARO/OSCURO ============ -->
+<button id="theme-toggle" aria-label="Cambiar tema" style="position: fixed; top: 20px; left: 20px; z-index: 9999; background: rgba(255,255,255,0.1); border: 1px solid var(--muted, #666); color: var(--gold, #d4af37); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-weight: 600; backdrop-filter: blur(5px); transition: all 0.3s ease;">
+  ☀️ Tema Claro
+</button>
+
+<style>
+  /* Variables y estilos que se activan solo con la clase .light-theme */
+  html.light-theme body {
+    background-color: #f4f6f8 !important; /* Fondo claro */
+    color: #0d1b2a !important; /* Texto oscuro */
+  }
+
+  /* Sobrescribir las variables de color del texto para el modo claro */
+  html.light-theme {
+    --ink: #0d1b2a; 
+    --muted: #4a5568;
+    --electric: #0056b3; 
+    /* El dorado (--gold) suele verse bien en ambos modos, así que lo conservamos */
+  }
+
+  /* Ajuste de las tarjetas y tablas para que resalten en el fondo blanco */
+  html.light-theme .card, 
+  html.light-theme .tbl-wrap {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  html.light-theme .dtable th {
+    border-bottom: 2px solid #cbd5e1 !important;
+    color: var(--ink);
+  }
+  
+  html.light-theme .dtable td {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  /* Magia para los canvas (los globos) y gráficos: invierte los tonos oscuros a claros */
+  html.light-theme .slide-bg-canvas,
+  html.light-theme .chart {
+    filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(1.2);
+  }
+
+  /* Ajuste del HUD para que contraste en el modo claro */
+  html.light-theme #hud, 
+  html.light-theme #keys-hint {
+    color: #0d1b2a;
+    background: rgba(255, 255, 255, 0.7);
+  }
+  
+  html.light-theme .btn {
+    border-color: #cbd5e1;
+    color: #0d1b2a;
+  }
+</style>
+
+<script>
+  // Lógica para alternar el tema y cambiar el texto del botón
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  
+  themeToggleBtn.addEventListener('click', () => {
+    const isLight = document.documentElement.classList.toggle('light-theme');
+    themeToggleBtn.innerHTML = isLight ? '🌙 Tema Oscuro' : '☀️ Tema Claro';
+    themeToggleBtn.style.background = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.1)';
+  });
+</script>
+<!-- ================================================= -->
 </body>
 </html>
