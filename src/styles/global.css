@@ -403,37 +403,33 @@ table.dtable {
 }
 /* ============ MODO CLARO (LIGHT THEME) ============ */
 html.light-theme {
-  /* Fondos azul cielo / celeste elegante */
-  --navy: #e1eff9;      /* Fondo de la diapositiva (celeste muy claro) */
-  --navy2: #cce3f5;     
+  /* Fondos celeste pastel puro y sólido */
+  --navy: #c9e4f5;      /* Fondo de la diapositiva (celeste pastel) */
+  --navy2: #b8daf2;     
   
-  --ink: #0f1c2e;       /* Textos oscuros para contrastar bien con el celeste */
+  --ink: #0f1c2e;       /* Textos oscuros */
   --muted: #4a5568;     
   --electric: #0056b3;  
 }
 
-/* Fondo exterior celeste un poco más intenso para enmarcar */
+/* Fondo exterior celeste pastel */
 html.light-theme, 
 html.light-theme body {
-  background: #cce3f5; 
+  background: #b8daf2; 
 }
 
+/* Fondo del viewport SÓLIDO: sin gradientes ni luces que suavicen el color */
 html.light-theme #viewport {
-  background: 
-    /* Cambiamos el destello superior a blanco para darle un efecto de luz natural al cielo */
-    radial-gradient(1200px 700px at 70% 20%, rgba(255, 255, 255, 0.5), transparent 60%),
-    radial-gradient(1000px 600px at 20% 85%, rgba(212, 175, 55, 0.08), transparent 60%),
-    #cce3f5;
+  background: #b8daf2; 
 }
 
-/* Ajustes de color para las notas y etiquetas que hagan juego con el celeste */
 html.light-theme #notes {
-  background: rgba(225, 239, 249, 0.98);
+  background: rgba(201, 228, 245, 0.98);
   border-color: rgba(0, 0, 0, 0.1);
 }
 
 html.light-theme .globe-label {
-  background: rgba(225, 239, 249, 0.95);
+  background: rgba(201, 228, 245, 0.95);
   border-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -455,15 +451,16 @@ html.light-theme .btn {
 }
 
 /* =========================================================
-   SEPARAMOS EL GLOBO DE LOS GRÁFICOS
+   GRÁFICOS Y GLOBO
 ========================================================= */
 
-/* 1. EL GLOBO TERRÁQUEO: Mantiene la misma intensidad que te gustó */
-html.light-theme .slide-bg-canvas {
-  filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(1.2);
-}
+/* 1. EL GLOBO TERRÁQUEO: 
+   Al no poner ninguna regla aquí para .slide-bg-canvas, 
+   el globo se quedará EXACTAMENTE IGUAL que en el modo oscuro. */
 
-/* 2. LOS GRÁFICOS: Textos oscuros y nítidos */
+/* 2. LOS GRÁFICOS: 
+   Mantenemos el filtro solo en las gráficas para que las letras 
+   y los números sigan siendo oscuros y legibles. */
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
 }
