@@ -400,6 +400,7 @@ table.dtable {
     white-space: nowrap;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
   }
+}
   /* ============ MODO CLARO (LIGHT THEME) ============ */
 html.light-theme {
   /* 1. Redefinir variables globales para modo claro */
