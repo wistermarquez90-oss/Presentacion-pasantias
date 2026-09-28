@@ -403,40 +403,42 @@ table.dtable {
 }
 /* ============ MODO CLARO (LIGHT THEME) ============ */
 html.light-theme {
-  /* Fondo pastel muy claro y suave (rompe el blanco puro sin oscurecer) */
-  --navy: #f8f9fc;      /* Fondo de la diapositiva: pastel súper claro */
-  --navy2: #edf2f7;     
+  /* Fondos azul cielo / celeste elegante */
+  --navy: #e1eff9;      /* Fondo de la diapositiva (celeste muy claro) */
+  --navy2: #cce3f5;     
   
-  --ink: #111e2d;       /* Textos oscuros para que se lean bien */
+  --ink: #0f1c2e;       /* Textos oscuros para contrastar bien con el celeste */
   --muted: #4a5568;     
   --electric: #0056b3;  
 }
 
-/* Fondo exterior pastel claro */
+/* Fondo exterior celeste un poco más intenso para enmarcar */
 html.light-theme, 
 html.light-theme body {
-  background: #edf2f7; 
+  background: #cce3f5; 
 }
 
 html.light-theme #viewport {
   background: 
-    radial-gradient(1200px 700px at 70% 20%, rgba(0, 86, 179, 0.05), transparent 60%),
+    /* Cambiamos el destello superior a blanco para darle un efecto de luz natural al cielo */
+    radial-gradient(1200px 700px at 70% 20%, rgba(255, 255, 255, 0.5), transparent 60%),
     radial-gradient(1000px 600px at 20% 85%, rgba(212, 175, 55, 0.08), transparent 60%),
-    #edf2f7;
+    #cce3f5;
 }
 
+/* Ajustes de color para las notas y etiquetas que hagan juego con el celeste */
 html.light-theme #notes {
-  background: rgba(248, 249, 252, 0.98);
+  background: rgba(225, 239, 249, 0.98);
   border-color: rgba(0, 0, 0, 0.1);
 }
 
 html.light-theme .globe-label {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(225, 239, 249, 0.95);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 html.light-theme .bigq {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.12);
 }
 
 html.light-theme .dtable th {
@@ -456,14 +458,12 @@ html.light-theme .btn {
    SEPARAMOS EL GLOBO DE LOS GRÁFICOS
 ========================================================= */
 
-/* 1. EL GLOBO TERRÁQUEO: Exactamente como te gustó en la foto, 
-      con su luz y brillo original */
+/* 1. EL GLOBO TERRÁQUEO: Mantiene la misma intensidad que te gustó */
 html.light-theme .slide-bg-canvas {
   filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(1.2);
 }
 
-/* 2. LOS GRÁFICOS: A estos sí les aplicamos la corrección (menos brillo) 
-      para que los textos y números grises se vuelvan negros y legibles */
+/* 2. LOS GRÁFICOS: Textos oscuros y nítidos */
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
 }
