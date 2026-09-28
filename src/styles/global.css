@@ -403,50 +403,45 @@ table.dtable {
 }
 /* ============ MODO CLARO (LIGHT THEME) ============ */
 html.light-theme {
-  /* 1. Fondos pastel elegantes (azul-grisáceo suave) para resaltar el globo */
-  --navy: #f0f4f8;      /* Fondo interno de la diapositiva (suavizado) */
-  --navy2: #e2e8f0;     /* Tono secundario */
+  /* Fondo pastel muy claro y suave (rompe el blanco puro sin oscurecer) */
+  --navy: #f8f9fc;      /* Fondo de la diapositiva: pastel súper claro */
+  --navy2: #edf2f7;     
   
-  /* 2. Textos mucho más oscuros para máxima legibilidad */
-  --ink: #111e2d;       /* Azul marino casi negro para textos principales */
-  --muted: #475569;     /* Gris oscuro para textos secundarios */
-  --electric: #0056b3;  /* Azul eléctrico profundo */
+  --ink: #111e2d;       /* Textos oscuros para que se lean bien */
+  --muted: #4a5568;     
+  --electric: #0056b3;  
 }
 
-/* Fondo exterior (detrás de la diapositiva) un poco más oscuro para enmarcar */
+/* Fondo exterior pastel claro */
 html.light-theme, 
 html.light-theme body {
-  background: #e2e8f0;
+  background: #edf2f7; 
 }
 
 html.light-theme #viewport {
   background: 
-    radial-gradient(1200px 700px at 70% 20%, rgba(0, 86, 179, 0.08), transparent 60%),
-    radial-gradient(1000px 600px at 20% 85%, rgba(212, 175, 55, 0.1), transparent 60%),
-    #e2e8f0;
+    radial-gradient(1200px 700px at 70% 20%, rgba(0, 86, 179, 0.05), transparent 60%),
+    radial-gradient(1000px 600px at 20% 85%, rgba(212, 175, 55, 0.08), transparent 60%),
+    #edf2f7;
 }
 
 html.light-theme #notes {
-  background: rgba(240, 244, 248, 0.98);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(248, 249, 252, 0.98);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 html.light-theme .globe-label {
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 html.light-theme .bigq {
-  background: rgba(212, 175, 55, 0.12);
-  color: #111e2d;
+  background: rgba(212, 175, 55, 0.1);
 }
 
-/* Mayor contraste para las líneas de las tablas */
 html.light-theme .dtable th {
   border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   color: var(--ink);
-  font-weight: 700;
 }
 
 html.light-theme .dtable td {
@@ -454,17 +449,21 @@ html.light-theme .dtable td {
 }
 
 html.light-theme .btn {
-  border-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
-   3. MAGIA PARA GRÁFICOS Y GLOBO (CORRECCIÓN DE LETRAS)
-   Subimos el contraste (1.3) y BAJAMOS el brillo (0.8).
-   Al hacer esto, las letras tenues invertidas se vuelven 
-   oscuras, nítidas y perfectamente legibles, y los colores
-   ganan fuerza.
+   SEPARAMOS EL GLOBO DE LOS GRÁFICOS
 ========================================================= */
-html.light-theme .slide-bg-canvas,
+
+/* 1. EL GLOBO TERRÁQUEO: Exactamente como te gustó en la foto, 
+      con su luz y brillo original */
+html.light-theme .slide-bg-canvas {
+  filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(1.2);
+}
+
+/* 2. LOS GRÁFICOS: A estos sí les aplicamos la corrección (menos brillo) 
+      para que los textos y números grises se vuelvan negros y legibles */
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
 }
