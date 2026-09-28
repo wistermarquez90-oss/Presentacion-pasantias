@@ -451,16 +451,16 @@ html.light-theme .btn {
 ========================================================= */
 
 /* 1. EL GLOBO TERRÁQUEO: 
-   Vuelve a estar iluminado, pero bajamos el brillo (0.95) y el 
-   contraste (1.0) para que sea luminoso sin verse tan blanco. 
-   Esto le dará un tono más parecido al celeste circundante. */
+   Eliminamos la opacidad que lo ponía gris. Usamos un brillo 
+   de 1.08 (intermedio) y un contraste sutil para que irradie 
+   luz limpia sobre el fondo celeste sin quemar la vista. */
 html.light-theme .slide-bg-canvas {
-  filter: invert(1) hue-rotate(180deg) contrast(1.0) brightness(0.95) opacity(0.85);
+  filter: invert(1) hue-rotate(180deg) contrast(1.05) brightness(1.08);
 }
 
 /* 2. LOS GRÁFICOS: 
    Mantenemos su filtro específico para que las letras y 
-   los números de la data migratoria sigan siendo legibles. */
+   los números de la data sigan siendo oscuros y legibles. */
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
 }
