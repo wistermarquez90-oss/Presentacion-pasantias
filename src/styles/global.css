@@ -467,14 +467,13 @@ html.light-theme .chart {
 
   /* ============ EXPORTAR A PDF POR SI LAS MOSCAS ============ */
 @media print {
-  /* Forzar el tamaño de la página a 16:9 (exactamente como tu #stage) */
   @page {
     size: 1600px 900px; 
     margin: 0;
   }
   
   html, body, #viewport, #stage {
-    width: 100% !important;
+    width: 1600px !important;
     height: auto !important;
     overflow: visible !important;
     position: relative !important;
@@ -482,18 +481,18 @@ html.light-theme .chart {
     transform: none !important;
   }
 
-  /* MUY IMPORTANTE: Obligar al navegador a imprimir los colores oscuros, fondos y el globo */
+  /* MUY IMPORTANTE: Obligar al navegador a imprimir los colores oscuros */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Ocultar botones, controles laterales y notas para que el PDF quede limpio */
+  /* Ocultar la interfaz para que el PDF quede limpio */
   #hud, #sidebar, #keys-hint, #notes, #theme-toggle, #tap-prev, #tap-next {
     display: none !important;
   }
 
-  /* Desempaquetar TODAS las diapositivas para que salgan una debajo de la otra */
+  /* Desempaquetar TODAS las diapositivas */
   .slide {
     position: relative !important;
     display: flex !important;
@@ -502,13 +501,16 @@ html.light-theme .chart {
     opacity: 1 !important;
     visibility: visible !important;
     break-inside: avoid !important;
-    page-break-after: always !important; /* Salto de página para el PDF */
+    page-break-after: always !important; 
   }
 
-  /* Revelar al instante todos los textos animados (quitar blur y transformaciones) */
-  .st, tr.st {
+  /* LA MAGIA AQUÍ: Matar animaciones y forzar la aparición de todos los pasos a la vez */
+  .st, tr.st, [data-s] {
     opacity: 1 !important;
-    transform: none !important;
+    visibility: visible !important;
+    transform: translate(0, 0) !important;
     filter: none !important;
+    transition: none !important; /* Evita que el PDF se congele en el paso 0 */
+    animation: none !important;
   }
 }
