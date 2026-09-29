@@ -463,4 +463,53 @@ html.light-theme .slide-bg-canvas {
    los números de la data sigan siendo oscuros y legibles. */
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
+  }
+}
+  /* ============ EXPORTAR A PDF POR SI LAS MOSCAS ============ */
+@media print {
+  /* Forzar el tamaño de la página a 16:9 (exactamente como tu #stage) */
+  @page {
+    size: 1600px 900px; 
+    margin: 0;
+  }
+  
+  html, body, #viewport, #stage {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    display: block !important;
+    transform: none !important;
+  }
+
+  /* MUY IMPORTANTE: Obligar al navegador a imprimir los colores oscuros, fondos y el globo */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ocultar botones, controles laterales y notas para que el PDF quede limpio */
+  #hud, #sidebar, #keys-hint, #notes, #theme-toggle, #tap-prev, #tap-next {
+    display: none !important;
+  }
+
+  /* Desempaquetar TODAS las diapositivas para que salgan una debajo de la otra */
+  .slide {
+    position: relative !important;
+    display: flex !important;
+    width: 1600px !important;
+    height: 900px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    break-inside: avoid !important;
+    page-break-after: always !important; /* Salto de página para el PDF */
+  }
+
+  /* Revelar al instante todos los textos animados (quitar blur y transformaciones) */
+  .st, tr.st {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
 }
