@@ -464,7 +464,7 @@ html.light-theme .slide-bg-canvas {
 html.light-theme .chart {
   filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.8) saturate(1.2);
   }
-}
+
   /* ============ EXPORTAR A PDF POR SI LAS MOSCAS ============ */
 @media print {
   /* Forzar el tamaño de la página a 16:9 (exactamente como tu #stage) */
